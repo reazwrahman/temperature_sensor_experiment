@@ -8,7 +8,7 @@ WEATHER_API = "https://api.openweathermap.org/data/2.5/weather?lat=40.683961&lon
 WAIT_TIME = 300 # seconds
 
 def fetch_weather_data():
-    output_file = "data1.txt" 
+    output_file = "data_june5_day.txt" 
     est = pytz.timezone('US/Eastern')
     while True:
         try:
