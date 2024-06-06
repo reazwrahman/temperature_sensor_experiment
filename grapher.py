@@ -64,14 +64,31 @@ def plot_weather_data(input_file):
                 temps1.append(temp1)
                 hums1.append(hum1)
                 temps2.append(temp2)
-                hums2.append(hum2) 
+                hums2.append(hum2)  
             else:
                 print(f"Skipping invalid line: {line}")
 
 
-    
+    timestamps = shorten_dataset(timestamps) 
+    temps1 = shorten_dataset(temps1) 
+    temps2 = shorten_dataset(temps2) 
+    hums1 = shorten_dataset(hums1) 
+    hums2 = shorten_dataset(hums2)
     plot_temp_data(timestamps, temps1, temps2) 
     plot_hum_data(timestamps, hums1, hums2)
 
 
-plot_weather_data("data1.txt")
+def shorten_dataset(data):  
+    shortened = []  
+    count = 0
+    for i in range (len(data)):  
+        count +=1 
+        if count == 5:  ## get every nth data point
+            shortened.append(data[i]) 
+            count = 0 
+    
+    return shortened
+
+
+
+plot_weather_data("data_june5_day.txt")
