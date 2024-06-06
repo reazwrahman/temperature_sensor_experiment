@@ -5,7 +5,7 @@ import pytz
 
 LOCAL_API = "http://192.168.1.209:8080/currentState" 
 WEATHER_API = "https://api.openweathermap.org/data/2.5/weather?lat=40.683961&lon=-73.817874&units=metric&appid=8a757115f1d5c68d542ff30473fdf820" 
-WAIT_TIME = 300 # seconds
+WAIT_TIME = 600 # seconds
 
 def fetch_weather_data():
     output_file = "data_june5_night.txt" 
