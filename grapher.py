@@ -70,10 +70,10 @@ def plot_weather_data(input_file):
 
 
     timestamps = shorten_dataset(timestamps) 
-    temps1 = shorten_dataset(temps1) 
-    temps2 = shorten_dataset(temps2) 
-    hums1 = shorten_dataset(hums1) 
-    hums2 = shorten_dataset(hums2)
+    temps1 = average_dataset(temps1) 
+    temps2 = average_dataset(temps2) 
+    hums1 = average_dataset(hums1) 
+    hums2 = average_dataset(hums2)
     plot_temp_data(timestamps, temps1, temps2) 
     plot_hum_data(timestamps, hums1, hums2)
 
@@ -83,12 +83,31 @@ def shorten_dataset(data):
     count = 0
     for i in range (len(data)):  
         count +=1 
-        if count == 5:  ## get every nth data point
+        if count == 3:  ## get every nth data point
             shortened.append(data[i]) 
             count = 0 
     
-    return shortened
+    return shortened 
+
+
+def average_dataset(dataset): 
+    # get running average of every nth data 
+    count = 0 
+    averaged = [] 
+    total = 0
+    for i in range (len(dataset)):  
+        total += dataset[i] 
+        count +=1 
+        if count == 3: ## average of every n data  
+            avg = round((total/count),2) 
+            averaged.append(total)
+            count = 0 
+            total = 0 
+    
+    return averaged
+            
 
 
 
-plot_weather_data("data_june5_day.txt")
+
+plot_weather_data("data_june5_night.txt")
